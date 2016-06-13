@@ -51,6 +51,15 @@ describe('CNSX', function () {
       .catch((err) => done(err));
   });
 
+  it('Should get last 25 trades', function (done) {
+    cnsx.getLastTrades(SYMBOL)
+      .then((data) => {
+        assert.isArray(data);
+        done();
+      })
+      .catch((err) => done(err));
+  });
+
   it('Should get market quote', function (done) {
     cnsx.getQuote(SYMBOL)
       .then((data) => {

@@ -198,6 +198,34 @@ module.exports = {
   },
 
   /**
+   * Gets last 25 trades
+   *
+   * @param  {String}    symbol    The symbol to get data for
+   * @param  {Function}  callback  [OPTIONAL] alternative callback to promise
+   * @return {Promise}
+   */
+  getLastTrades: function (symbol, callback) {
+    return new Promise((resolve, reject) => {
+      request({
+        method: 'GET',
+        url: `${URL_LAST_TRADES}${symbol}`,
+        headers: {
+          'accept-encoding': 'gzip, deflate, sdch',
+          'user-agent': 'npm-cnsx',
+          'cache-control': 'max-age=0',
+          'content-type': 'application/json'
+        },
+        json: true
+      }, (err, res, body) => {
+        this._clean(body);
+        typeof callback === 'function' && callback(err, body);
+        if (err) return reject(err);
+        (res.statusCode === 200) ? resolve(body): reject(new Error(res.statusCode));
+      });
+    });
+  },
+
+  /**
    * Gets a market quotes
    *
    * @param  {String}    symbol    The symbol to get data for
@@ -247,6 +275,9 @@ module.exports = {
   _cleanSingle: function (data) {
     for (let key in data) {
       switch (key) {
+      case 'classification':
+        data[key] = data[key].trim();
+        break;
       case 'exchange':
         data[key] = data[key].trim();
         break;

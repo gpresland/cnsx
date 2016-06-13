@@ -54,6 +54,11 @@ cnsx.getChart('1', (err, data) => {
   - Gets stock symbols listed on the exchange.
   - **Parameters**
     - `Function`: [OPTIONAL] alternative callback to use instead of the promise returned.
+- getLastTrades
+  - Gets the last 25 trades.
+  - **Parameters**
+    - `String`: The symbol to get data for.
+    - `Function`: [OPTIONAL] alternative callback to use instead of the promise returned.
 - getQuote
   - Gets a market quotes
   - **Parameters**

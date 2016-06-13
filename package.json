@@ -1,14 +1,16 @@
 {
   "name": "cnsx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Unofficial Canadian Securities Exchange fetcher.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "Stocks",
-    "CNSX"
+    "CNSX",
+    "CSE",
+    "Exchange",
+    "Stocks"
   ],
   "author": "gpresland",
   "license": "MIT",
